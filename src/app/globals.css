@@ -27,7 +27,7 @@ body {
 
 @font-face {
   font-family: "Obviously";
-  /*src: url("./public/fonts/fonnts.com-Obviously_Semi.otf") format("opentype"); */
+  src: url("/fonts/fonnts.com-Obviously_Semi.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;

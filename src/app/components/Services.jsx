@@ -1,6 +1,6 @@
 "use client";
 
-import { Code, Palette, Rocket, Search } from "lucide-react";
+import { Code, Palette, Rocket, Search, FolderHeart } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
@@ -20,7 +20,7 @@ const services = [
   },
   {
     icon: Search,
-    title: "SEO & Analytics",
+    title: "Stratégie digitale & Analytics", //SEO (terme SEO trop ciblé ?)
     description:
       "Visibilité optimale et analyse en temps réel de vos performances.",
     size: "medium", // Carte moyenne
@@ -30,6 +30,12 @@ const services = [
     title: "Accompagnement",
     description:
       "Support continu et évolution de votre plateforme selon vos besoins.",
+    size: "medium", // Carte moyenne
+  },
+  {
+    icon: FolderHeart,
+    title: "Amour",
+    description: "Nous diffusons l'amour.",
     size: "medium", // Carte moyenne
   },
 ];
@@ -69,9 +75,11 @@ export function Services() {
             <h2
               className="mb-6 tracking-tight text-white"
               style={{
-                fontSize: "3.5rem",
+                fontSize: "3rem",
                 fontWeight: "200",
                 lineHeight: "1.1",
+                fontFamily: "Obviously",
+                color: "#D070E5",
               }}
             >
               Nos expertises
