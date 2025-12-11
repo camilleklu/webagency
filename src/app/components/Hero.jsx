@@ -3,145 +3,128 @@
 import { Button } from "./ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+// Chargement du cube sans SSR
+const CubeScene = dynamic(() => import("../components/CubeScene"), { ssr: false });
 
 export function Hero() {
   return (
-    <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-[#0E0E0E]">
-      {/* Animated gradient orbs */}
+    <section id="accueil" className="relative w-full h-screen overflow-hidden bg-[#0E0E0E]">
+      
+      {/* --- LAYER 0 : BACKGROUND SCENE (CUBE) --- */}
+      {/* Z-0 pour rester derrière. Inset-0 pour prendre tout l'écran. */}
+      <div className="absolute inset-0 z-0">
+        <CubeScene />
+      </div>
+
+      {/* --- LAYER 1 : DECORATIVE ORBS (Subtils derrière le texte) --- */}
       <motion.div 
-        className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full opacity-30 blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, #D070E5 0%, transparent 70%)'
-        }}
-        animate={{
-          scale: [1.2, 1],
-          opacity: [0.5, 0.3],
-          x: [50, 0],
-          y: [-50, 0]
-        }}
-        transition={{
-          ease: "easeInOut"
-        }}
+        className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full opacity-20 blur-[100px] pointer-events-none"
+        style={{ background: 'radial-gradient(circle, #D070E5 0%, transparent 70%)' }}
+        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       
-      <motion.div 
-        className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full opacity-20 blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, #E3BDFF 0%, transparent 70%)'
-        }}
-        animate={{
-          scale: [1.3, 1],
-          opacity: [0.4, 0.2],
-          x: [-30, 0],
-          y: [40, 0]
-        }}
-        transition={{
-          ease: "easeInOut"
-        }}
-      />
-
-      {/* Grid pattern overlay */}
+      {/* Grid pattern overlay (très léger) */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
         style={{
           backgroundImage: 'linear-gradient(#D070E5 1px, transparent 1px), linear-gradient(90deg, #D070E5 1px, transparent 1px)',
           backgroundSize: '50px 50px'
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+      {/* --- LAYER 2 : CONTENU (UI) --- */}
+      {/* z-10 pour être au dessus. pointer-events-none pour laisser passer les clics vers le cube ailleurs */}
+      <div className="relative z-10 container mx-auto h-full px-6 flex flex-col justify-center lg:flex-row lg:items-center pointer-events-none">
+        
+        {/* Colonne Gauche : Contenu Texte */}
+        {/* Sur mobile : centré. Sur Desktop : aligné à gauche et largeur limitée à 50% pour ne pas toucher le cube central */}
+        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left pt-20 lg:pt-0">
+          
           {/* Floating badge */}
           <motion.div 
-            className="inline-flex items-center gap-2 mb-8 px-6 py-3 rounded-full backdrop-blur-md bg-white/5 border border-[#D070E5]/30"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 mb-8 px-6 py-3 rounded-full backdrop-blur-md bg-white/5 border border-[#D070E5]/30 pointer-events-auto cursor-default"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            style={{
-              boxShadow: '0 0 30px rgba(208, 112, 229, 0.2)'
-            }}
           >
             <Sparkles className="w-4 h-4 text-[#E3BDFF]" />
-            <span className="text-[#E3BDFF]">Agence web visionnaire</span>
+            <span className="text-[#E3BDFF] font-medium">Agence web visionnaire</span>
           </motion.div>
 
           <motion.h1 
-            className="mb-8 tracking-tight"
-            style={{ fontSize: '5rem', fontWeight: '200', lineHeight: '1.1' }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 tracking-tight font-extralight leading-[1.1]"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            <span className="text-white">Créons le lien</span>
-            <br />
-            <span className="text-white">entre vous et </span>
+            {/* Responsive Text Size */}
+            <span className="text-white text-5xl md:text-6xl lg:text-7xl block mb-2">
+              Créons le lien
+            </span>
+            <span className="text-white text-5xl md:text-6xl lg:text-7xl">
+              entre vous et 
+            </span>
+            <br className="hidden lg:block" />
             <span 
-              className="bg-gradient-to-r from-[#D070E5] via-[#E3BDFF] to-[#D070E5] bg-clip-text text-transparent"
-              style={{
-                textShadow: '0 0 80px rgba(208, 112, 229, 0.5)'
-              }}
+              className="text-5xl md:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#D070E5] via-[#E3BDFF] to-[#D070E5] bg-clip-text text-transparent"
+              style={{ textShadow: '0 0 80px rgba(208, 112, 229, 0.5)' }}
             >
-              le web
+               le web
             </span>
           </motion.h1>
 
           <motion.p 
-            className="mb-12 text-gray-400 max-w-3xl mx-auto"
-            style={{ fontSize: '1.25rem' }}
+            className="mb-10 text-gray-400 max-w-lg text-lg lg:text-xl pointer-events-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            Une agence web créative à la frontière entre innovation technologique et proximité humaine. 
-            Nous transformons vos visions en expériences digitales mémorables.
+            Une approche créative à la frontière entre innovation technologique et proximité humaine.
           </motion.p>
 
           <motion.div 
-            className="flex items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center gap-4 pointer-events-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
             <Button 
-              className="relative bg-gradient-to-r from-[#D070E5] to-[#E3BDFF] hover:from-[#E3BDFF] hover:to-[#D070E5] text-white rounded-full px-10 py-7 border-0 group overflow-hidden"
-              style={{ 
-                fontSize: '1.125rem',
-                boxShadow: '0 0 40px rgba(208, 112, 229, 0.6), 0 0 80px rgba(208, 112, 229, 0.3)'
-              }}
+              className="bg-gradient-to-r from-[#D070E5] to-[#E3BDFF] hover:from-[#E3BDFF] hover:to-[#D070E5] text-white rounded-full px-8 py-6 text-lg shadow-[0_0_30px_rgba(208,112,229,0.4)] hover:shadow-[0_0_50px_rgba(208,112,229,0.6)] transition-all duration-300"
             >
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="flex items-center gap-2">
                 Démarrer un projet
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5" />
               </span>
             </Button>
             
             <Button 
               variant="ghost"
-              className="rounded-full px-10 py-7 border border-[#D070E5]/50 text-[#E3BDFF] hover:bg-[#D070E5]/10 hover:border-[#D070E5] backdrop-blur-sm"
-              style={{ fontSize: '1.125rem' }}
+              className="rounded-full px-8 py-6 text-lg border border-[#D070E5]/30 text-[#E3BDFF] hover:bg-[#D070E5]/10 backdrop-blur-sm"
             >
-              Explorer nos créations
+              Nos créations
             </Button>
           </motion.div>
+        </div>
 
-          {/* Connection lines decoration */}
-          <motion.div 
-            className="absolute top-1/2 left-0 w-32 h-[1px] bg-gradient-to-r from-transparent to-[#D070E5]/50"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-          />
-          <motion.div 
-            className="absolute top-1/2 right-0 w-32 h-[1px] bg-gradient-to-l from-transparent to-[#D070E5]/50"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-          />
+        {/* Colonne Droite : Espace vide pour le cube */}
+        <div className="hidden lg:block lg:w-1/2 h-full pointer-events-none">
+            {/* Cet espace est laissé vide intentionnellement pour voir le cube */}
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+      {/* Decorative lines (Déplacées pour encadrer le layout) */}
+      <motion.div 
+        className="absolute bottom-10 left-0 w-1/3 h-[1px] bg-gradient-to-r from-transparent to-[#D070E5]/30"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+      />
+      
+      {/* Fade at bottom to blend with next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0E0E0E] to-transparent pointer-events-none" />
     </section>
   );
 }
