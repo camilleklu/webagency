@@ -134,9 +134,12 @@ export default function CubeScene() {
         container.clientWidth,
         container.clientHeight,
         { 
-          minFilter: THREE.LinearFilter, 
-          magFilter: THREE.LinearFilter, 
+          minFilter: THREE.LinearFilter, // Filtrage basique, un bon choix
+          magFilter: THREE.LinearFilter, // Filtrage basique, un bon choix
           format: THREE.RGBAFormat,
+          // *** NOUVEAUTÉ : Utiliser le HalfFloatType pour une meilleure précision des couleurs/luminosités (HDR) ***
+          type: THREE.HalfFloatType, 
+          // *** OPTIMISATION MAINTENUE : Non nécessaire pour le bloom simple ***
           stencilBuffer: false 
         }
     );
