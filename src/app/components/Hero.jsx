@@ -72,7 +72,7 @@ export function Hero() {
               className="text-5xl md:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#D070E5] via-[#E3BDFF] to-[#D070E5] bg-clip-text text-transparent"
               style={{ textShadow: '0 0 80px rgba(208, 112, 229, 0.5)' }}
             >
-               le web
+                le web
             </span>
           </motion.h1>
 

@@ -1,13 +1,22 @@
-"use client";
+'use client';
 
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-// OrbitControls supprimé car inutile et désactivé dans ton code original
 import { EXRLoader } from "three/examples/jsm/loaders/EXRLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+
+// Définition de l'offset X
+// Nous compensons le décalage de 20% vers la droite de la div parente dans Hero.tsx
+// L'unité "1" dans l'espace X de la caméra correspond environ à un mouvement de ~30% de la largeur de l'écran
+// sur ce FOV (50). J'utilise 0.5 comme valeur de base et je l'adapte en fonction de l'aspect ratio (resize).
+
+// Valeur en unités 3D pour décaler la position X de la caméra. 
+// Sera calculée dynamiquement lors du resize.
+let CAMERA_OFFSET_X = 0; 
+const TARGET_CAMERA_OFFSET_FACTOR = 0.5; // Facteur de décalage X de la caméra (à ajuster si besoin)
 
 export default function CubeScene() {
   const mountRef = useRef(null);
@@ -28,21 +37,21 @@ export default function CubeScene() {
   const sceneRef = useRef(null);
   const rendererRef = useRef(null);
   const composerRef = useRef(null);
-  const materialsRef = useRef([]); // Pour nettoyer proprement les matériaux
-  const texturesRef = useRef([]); // Pour nettoyer les textures
+  const materialsRef = useRef([]); 
+  const texturesRef = useRef([]); 
+  const cameraRef = useRef(null); // Ajout d'une ref pour la caméra
 
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
 
+    // ... (Code existant pour les performances et la souris) ...
     // --- CONFIGURATION PERFORMANCES ---
-    // Limite les FPS pour sauver la batterie (30 à 60 sont suffisants pour du décor)
     const FPS_LIMIT = 45; 
     const FRAME_INTERVAL = 1000 / FPS_LIMIT;
 
     // --- GESTION DE LA SOURIS ---
     const onMouseMove = (event) => {
-      // Optimisation : ne pas recalculer si la fenêtre est minimisée
       if (document.hidden) return;
       mouseRef.current.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouseRef.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -93,19 +102,21 @@ export default function CubeScene() {
       0.1,
       100
     );
-    camera.position.set(0, 0, 12);
+    cameraRef.current = camera; // Stockage de la référence
+    
+    // Décalage initial, sera ajusté lors du premier resize
+    camera.position.set(0, 0, 12); 
+    // FIN: CAMERA
 
     // --- RENDERER (OPTIMISÉ) ---
     const renderer = new THREE.WebGLRenderer({
-      antialias: false, // L'antialias est géré par le post-processing ou inutile avec le bloom
-      powerPreference: "default", // "high-performance" force le GPU à fond, "default" laisse l'OS gérer
+      antialias: false, 
+      powerPreference: "default", 
       stencil: false,
       depth: true,
-      precision: "mediump", // "mediump" suffit souvent et consomme moins que "highp"
+      precision: "mediump", 
     });
     
-    // OPTIMISATION CRITIQUE : Limiter le pixel ratio à 1.5 max. 
-    // Sur un écran Retina/4k, 2 ou 3 tue la batterie pour un gain visuel minime avec du Bloom.
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -116,6 +127,7 @@ export default function CubeScene() {
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
+    // ... (Code existant pour PostProcessing, Lights, Textures & Materials, Geometry) ...
     // --- POSTPROCESSING ---
     // Optimisation : Désactiver le buffer stencil pour le composer
     const renderTarget = new THREE.WebGLRenderTarget(
@@ -125,7 +137,7 @@ export default function CubeScene() {
           minFilter: THREE.LinearFilter, 
           magFilter: THREE.LinearFilter, 
           format: THREE.RGBAFormat,
-          stencilBuffer: false // Pas besoin de stencil ici
+          stencilBuffer: false 
         }
     );
 
@@ -133,7 +145,6 @@ export default function CubeScene() {
     const renderPass = new RenderPass(scene, camera);
     composer.addPass(renderPass);
 
-    // Optimisation : Résolution du bloom peut être plus basse que l'écran (ex: division par 2 si très critique)
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(container.clientWidth, container.clientHeight),
       0.5,
@@ -178,7 +189,7 @@ export default function CubeScene() {
       emissive: 0x000000,
       roughness: 1,
       roughnessMap: noiseRoughness,
-      transmission: 1.0, // C'est la propriété la plus coûteuse
+      transmission: 1.0, 
       thickness: 0.5,
       ior: 1.33,
       transparent: true,
@@ -250,7 +261,6 @@ export default function CubeScene() {
       loadedModel.traverse((child) => {
         if (child.isMesh) {
           child.material = iceMaterial;
-          // Désactiver ombres si non utilisées pour perf
           child.castShadow = false;
           child.receiveShadow = false; 
         }
@@ -276,20 +286,15 @@ export default function CubeScene() {
     const animate = (time) => {
       requestRef.current = requestAnimationFrame(animate);
 
-      // Calcul du delta time pour limiter les FPS
       const deltaTime = time - lastFrameTime.current;
 
       if (deltaTime >= FRAME_INTERVAL) {
-        // Ajustement pour caler au multiple de l'intervalle le plus proche
         lastFrameTime.current = time - (deltaTime % FRAME_INTERVAL);
 
-        // Mise à jour du temps logique de l'animation
-        // On utilise un delta fixe (0.016) ou calculé pour l'animation interne
-        // pour garder la vitesse constante peu importe les FPS réels.
         const internalDelta = 0.016; 
         timeRef.current += internalDelta;
 
-        // --- LOGIQUE D'ANIMATION (identique à l'original) ---
+        // ... (Logique d'animation des rotations, etc.) ...
         baseRotationRef.current.x -= 0.0004;
         baseRotationRef.current.y += 0.001;
 
@@ -316,7 +321,8 @@ export default function CubeScene() {
           introProgress += internalDelta / introDuration;
           if (introProgress >= 1) introProgress = 1;
           const t = introProgress * introProgress * (3 - 2 * introProgress);
-          camera.position.z = startZ + (targetZoomZ - startZ) * t;
+          // La position X est maintenant gérée par onResize, seule la Z évolue
+          camera.position.z = startZ + (targetZoomZ - startZ) * t; 
           if (introProgress === 1) introZoom = false;
         }
 
@@ -327,14 +333,26 @@ export default function CubeScene() {
 
     requestRef.current = requestAnimationFrame(animate);
 
-    // --- RESIZE ---
+    // --- RESIZE (avec la logique de décalage X) ---
     const onResize = () => {
       if (!container) return;
       const width = container.clientWidth;
       const height = container.clientHeight;
       
       updateTargetZoom();
-      
+
+      // ** CALCUL DU DÉCALAGE DE LA CAMÉRA **
+      if (width >= 1024) { // Appliquer l'offset uniquement en mode desktop (lg)
+          // On déplace la caméra vers la gauche pour que l'objet (cube) se centre à droite.
+          // Pour un FOV de 50 et Z=12 (start) ou Z=1.8 (target), 1 unité X est une distance horizontale variable.
+          // Nous utilisons TARGET_CAMERA_OFFSET_FACTOR pour ajuster la position X.
+          CAMERA_OFFSET_X = -TARGET_CAMERA_OFFSET_FACTOR; 
+      } else {
+          // Sur mobile/tablette, pas de décalage
+          CAMERA_OFFSET_X = 0;
+      }
+      camera.position.x = CAMERA_OFFSET_X; // Application du décalage X
+
       camera.fov = width < 600 ? 60 : 50;
       cloudPlane.scale.set(
         camera.aspect > 1 ? camera.aspect * 1.2 : 1.2,
@@ -346,8 +364,12 @@ export default function CubeScene() {
       
       renderer.setSize(width, height);
       composer.setSize(width, height);
-      bloomPass.setSize(width, height); // Important de update le bloom aussi
+      bloomPass.setSize(width, height); 
     };
+    
+    // Appel initial pour positionner la caméra correctement dès le chargement
+    onResize(); 
+    
     window.addEventListener("resize", onResize);
 
     // --- CLEANUP ---
@@ -356,10 +378,8 @@ export default function CubeScene() {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("mousemove", onMouseMove);
 
-      // Disposal complet
       if (composerRef.current) composerRef.current.dispose();
       
-      // Nettoyage manuel des textures et matériaux
       texturesRef.current.forEach(t => t.dispose());
       materialsRef.current.forEach(m => m.dispose());
       if (exrTexture) exrTexture.dispose();
