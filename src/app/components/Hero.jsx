@@ -54,27 +54,22 @@ export function Hero() {
             <span className="text-[#E3BDFF] font-medium">Agence web visionnaire</span>
           </motion.div>
 
-          <motion.h1 
-            className="mb-6 tracking-tight font-extralight leading-[1.1]"
+          <motion.div
+            className="mb-6 tracking-tight font-extralight leading-[1.1] flex flex-col items-center pointer-events-auto lg:items-start"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             {/* Responsive Text Size */}
-            <span className="text-white text-5xl md:text-6xl lg:text-7xl block mb-2">
-              Créons le lien
-            </span>
-            <span className="text-white text-5xl md:text-6xl lg:text-7xl">
-              entre vous et 
-            </span>
-            <br className="hidden lg:block" />
-            <span 
-              className="text-5xl md:text-6xl lg:text-7xl font-semibold bg-gradient-to-r from-[#D070E5] via-[#E3BDFF] to-[#D070E5] bg-clip-text text-transparent"
-              style={{ textShadow: '0 0 80px rgba(208, 112, 229, 0.5)' }}
-            >
-                le web
-            </span>
-          </motion.h1>
+            <h1 className="text-white flex flex-col lg:block text-5xl md:text-6xl lg:text-7xl">Créons le lien entre vous et 
+              <span 
+                className="text-5xl md:text-6xl lg:ml-4 lg:text-7xl font-semibold bg-gradient-to-r from-[#D070E5] via-[#E3BDFF] to-[#D070E5] bg-clip-text text-transparent"
+                style={{ textShadow: '0 0 80px rgba(208, 112, 229, 0.5)' }}
+              >
+                  le web
+              </span>
+            </h1>
+          </motion.div>
 
           <motion.p 
             className="mb-10 text-gray-400 max-w-lg text-lg lg:text-xl pointer-events-auto"

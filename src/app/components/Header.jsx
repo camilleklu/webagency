@@ -19,16 +19,7 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <span 
-              className="tracking-tight bg-gradient-to-r from-white via-[#E3BDFF] to-[#D070E5] bg-clip-text text-transparent"
-              style={{ 
-                fontSize: '1.75rem', 
-                fontWeight: '300',
-                textShadow: '0 0 30px rgba(208, 112, 229, 0.5)'
-              }}
-            >
-              Lumina
-            </span>
+            <img src="/logosvg.svg" alt="Logo Lumina" className="w-24" />
           </motion.div>
 
           {/* Navigation */}
@@ -37,13 +28,13 @@ export function Header() {
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s/g, '-')}`}
-                className="text-gray-300 hover:text-[#E3BDFF] transition-colors relative group"
+                className="text-gray-300 hover:text-[#F42CFF] transition-colors relative group"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#D070E5] to-[#E3BDFF] group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-[#F42CFF] to-[#ffbbff] group-hover:w-full transition-all duration-300" />
               </motion.a>
             ))}
           </nav>
@@ -55,7 +46,7 @@ export function Header() {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <Button 
-              className="relative bg-gradient-to-r from-[#D070E5] to-[#E3BDFF] hover:from-[#E3BDFF] hover:to-[#D070E5] text-white rounded-full px-6 border-0 overflow-hidden group"
+              className="relative bg-gradient-to-r from-[#F42CFF] to-[#ffbbff] hover:from-[#ffbbff] hover:to-[#F42CFF] text-white rounded-full px-6 border-0 overflow-hidden group"
               style={{
                 boxShadow: '0 0 20px rgba(208, 112, 229, 0.5), 0 0 40px rgba(208, 112, 229, 0.2)'
               }}
