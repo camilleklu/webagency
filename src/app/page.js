@@ -12,8 +12,8 @@ export default function App() {
       <main>
         <Hero />
         <Services />
-        <Values />
         <Projects />
+        <Values />
       </main>
       <Footer />
     </div>

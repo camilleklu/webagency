@@ -23,16 +23,7 @@ export function Footer() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-6">
-              <span
-                className="tracking-tight bg-gradient-to-r from-white via-[#E3BDFF] to-[#D070E5] bg-clip-text text-transparent"
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: "200",
-                  textShadow: "0 0 40px rgba(208, 112, 229, 0.5)",
-                }}
-              >
-                Lumina
-              </span>
+              <img src="/logosvg.svg" alt="Logo Lumina" className="w-64" />
             </div>
             <p className="text-gray-400 max-w-md mb-8 leading-relaxed">
               Votre agence web créative et visionnaire, à la frontière entre

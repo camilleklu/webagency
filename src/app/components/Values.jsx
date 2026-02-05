@@ -2,6 +2,7 @@
 
 import { Eye, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import TextReveal from "./TextReveal";
 
 export function Values() {
   return (
@@ -71,10 +72,10 @@ export function Values() {
                 <h3 className="mb-4 text-white" style={{ fontSize: '1.75rem', fontWeight: '300' }}>
                   Transparence
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <TextReveal className="text-gray-400 leading-relaxed">
                   Communication cristalline et honnête à chaque étape. Nous croyons en un partenariat 
                   basé sur la confiance, la clarté et l'ouverture totale. Aucune surprise, que des solutions.
-                </p>
+                </TextReveal>
               </div>
 
               {/* Decorative lines */}
@@ -114,10 +115,10 @@ export function Values() {
                 <h3 className="mb-4 text-white" style={{ fontSize: '1.75rem', fontWeight: '300' }}>
                   Proximité
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <TextReveal className="text-pink-400 leading-relaxed">
                   Une collaboration humaine et accessible. Nous sommes à vos côtés, véritables partenaires 
                   de votre réussite digitale. L'écoute, l'empathie et la réactivité au cœur de notre méthode.
-                </p>
+                </TextReveal>
               </div>
 
               {/* Decorative lines */}

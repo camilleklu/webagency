@@ -24,7 +24,7 @@ export function Header() {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {['Accueil', 'Nos services', 'Projets', 'Contact'].map((item, index) => (
+            {['Accueil', 'Nos services', 'Contact'].map((item, index) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s/g, '-')}`}
@@ -46,7 +46,7 @@ export function Header() {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <Button 
-              className="relative bg-gradient-to-r from-[#F42CFF] to-[#ffbbff] hover:from-[#ffbbff] hover:to-[#F42CFF] text-white rounded-full px-6 border-0 overflow-hidden group"
+              className="relative bg-gradient-to-r from-[#D070E5] to-[#ffbbff] hover:from-[#ffbbff] hover:to-[#D070E5] text-white rounded-full px-6 border-0 overflow-hidden group"
               style={{
                 boxShadow: '0 0 20px rgba(208, 112, 229, 0.5), 0 0 40px rgba(208, 112, 229, 0.2)'
               }}

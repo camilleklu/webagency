@@ -12,10 +12,17 @@ const services = [
     size: "small", // Petite carte
   },
   {
-    icon: Code,
-    title: "Développement",
+    icon: Palette,
+    title: "Charte graphique",
     description:
-      "Sites web sur mesure, performants et optimisés pour tous les devices.",
+      "Identité visuelle forte et cohérente pour une marque mémorable.",
+    size: "small", // Petite carte
+  },
+  {
+    icon: Code,
+    title: "Développement d'API / back-office",
+    description:
+      "Sites web sur mesure, performants et optimisés pour tous les appareils.",
     size: "large", // Grande carte
   },
   {
@@ -23,20 +30,14 @@ const services = [
     title: "Stratégie digitale & Analytics", //SEO (terme SEO trop ciblé ?)
     description:
       "Visibilité optimale et analyse en temps réel de vos performances.",
-    size: "medium", // Carte moyenne
+    size: "small", // Carte moyenne
   },
   {
     icon: Rocket,
     title: "Accompagnement",
     description:
       "Support continu et évolution de votre plateforme selon vos besoins.",
-    size: "medium", // Carte moyenne
-  },
-  {
-    icon: FolderHeart,
-    title: "Amour",
-    description: "Nous diffusons l'amour.",
-    size: "medium", // Carte moyenne
+    size: "small", // Carte moyenne
   },
 ];
 
@@ -175,7 +176,7 @@ export function Services() {
                             <h3 className="text-white text-lg font-light mb-2">
                               {service.title}
                             </h3>
-                            <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
+                            <p className="text-gray-400 text-sm leading-relaxed pb-2 line-clamp-2">
                               {service.description}
                             </p>
                           </div>
