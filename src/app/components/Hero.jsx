@@ -84,13 +84,6 @@ export function Hero() {
                 <ArrowRight className="w-5 h-5" />
               </span>
             </Button>
-            
-            <Button 
-              variant="ghost"
-              className="rounded-full px-8 py-6 text-lg border border-[#D070E5]/30 text-[#E3BDFF] hover:bg-[#D070E5]/10 backdrop-blur-sm"
-            >
-              Nos créations
-            </Button>
           </motion.div>
         </div>
 
