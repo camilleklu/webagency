@@ -413,7 +413,7 @@ export default function CubeScene() {
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/80">
           <div className="flex flex-col items-center gap-3 text-white">
             <div className="h-10 w-10 animate-spin rounded-full border-2 border-sky-400 border-t-transparent" />
-            <p className="text-sm tracking-wide text-sky-100">Loading icy rock…</p>
+            <p className="text-sm tracking-wide text-sky-100">Chargement...</p>
           </div>
         </div>
       )}
