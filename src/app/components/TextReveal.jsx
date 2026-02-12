@@ -7,7 +7,7 @@ export default function TextReveal({ children, shadow = true }) {
   const container = useRef(null)
   const {scrollYProgress} = useScroll({
     target: container,
-    offset: ["start 0.9", "end 0.25"]
+    offset: ["start end", "start 0.25"]
   });
 
 
@@ -30,7 +30,7 @@ const Word = ({ children, progress, shadow, range }) => {
   const opacity = useTransform(progress, range, [0,1]);
   return(
     <span>
-      <span className={`absolute ${shadow ? 'opacity-[0.3]' : 'opacity-0'} text-xl gap-[4px]`}>{children}</span>
+      <span className={`absolute ${shadow ? 'opacity-[0.3]' : 'opacity-0'} text-xl text-white gap-[4px]`}>{children}</span>
       <motion.span style={{ opacity: opacity }}>{children}</motion.span>
     </span>
   )
