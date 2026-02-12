@@ -43,16 +43,6 @@ export function Hero() {
         {/* Sur mobile : centré. Sur Desktop : aligné à gauche et largeur limitée à 50% pour ne pas toucher le cube central */}
         <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left pt-20 lg:pt-0">
           
-          {/* Floating badge */}
-          <motion.div 
-            className="inline-flex items-center gap-2 mb-8 px-6 py-3 rounded-full backdrop-blur-md bg-white/5 border border-[#D070E5]/30 pointer-events-auto cursor-default"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            <Sparkles className="w-4 h-4 text-[#E3BDFF]" />
-            <span className="text-[#E3BDFF] font-medium">Agence web visionnaire</span>
-          </motion.div>
 
           <motion.div
             className="mb-6 tracking-tight font-extralight leading-[1.1] flex flex-col items-center pointer-events-auto lg:items-start"

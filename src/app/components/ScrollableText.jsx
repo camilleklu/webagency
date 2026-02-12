@@ -26,15 +26,9 @@ const Lines = ({src, left, progress, direction="left", text, separator, images, 
     const x = useTransform(progress, [0,1], [-1000 *dir , 1000 *dir])
     return(
         <motion.div style={{left, x}} className="flex relative whitespace-nowrap">
-            <Phrase src={src} font={font} text={text} separator={separator}  images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
+            {[...Array(9)].map((_, i) => (
+                 <Phrase key={i} src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
+            ))}
         </motion.div>
     )
 }
