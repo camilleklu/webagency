@@ -38,7 +38,7 @@ const Phrase = ({src, text, separator, images, font, color, separatorColor}) => 
     if(!images) {
         return(
             <div className="flex gap-5 px-5 items-center">
-                <p className={`text-[5.5vw] font-[${font}]`} style={{color: color}}>{text} 
+                <p className={`text-[5.5vw]`} style={{color: color, fontFamily: font}}>{text} 
                     <span className="text-[5.5vw]" style={{color: separatorColor}}>&nbsp;{separator}</span>
                 </p>
             </div>
