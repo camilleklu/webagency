@@ -6,11 +6,11 @@ import TextReveal from "./TextReveal";
 
 export function Values() {
   return (
-    <section id="nos-valeurs" className="py-32 relative overflow-hidden">
+    <section id="nos-valeurs" className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
         <motion.div 
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
@@ -27,17 +27,17 @@ export function Values() {
           </motion.div>
           
           <h2 
-            className="mb-6 tracking-tight text-white"
-            style={{ fontSize: '3.5rem', fontWeight: '200' }}
+            className="mb-6 tracking-tight text-white text-2xl sm:text-3xl md:text-4xl lg:text-[3.5rem]"
+            style={{ fontWeight: '200' }}
           >
             Nos valeurs
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto" style={{ fontSize: '1.125rem' }}>
+          <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base md:text-[1.125rem]">
             Entre transparence technologique et proximité humaine
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
           {/* Transparence */}
           <motion.div 
             className="group relative"
@@ -54,7 +54,7 @@ export function Values() {
             />
             
             {/* Glass card */}
-            <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-[#D070E5]/20 rounded-3xl p-10 overflow-hidden">
+            <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-[#D070E5]/20 rounded-3xl p-6 md:p-10 overflow-hidden">
               
               <div className="relative z-10">
                 <motion.div 
@@ -67,7 +67,7 @@ export function Values() {
                   <Eye className="w-10 h-10 text-[#D070E5]" />
                 </motion.div>
                 
-                <h3 className="mb-4 text-white" style={{ fontSize: '1.75rem', fontWeight: '300' }}>
+                <h3 className="mb-4 text-white text-xl md:text-[1.75rem]" style={{ fontWeight: '300' }}>
                   Transparence
                 </h3>
                 <TextReveal className="text-gray-400 leading-relaxed">
@@ -97,7 +97,7 @@ export function Values() {
             />
             
             {/* Glass card */}
-            <div className="relative backdrop-blur-xl bg-gradient-to-bl from-white/[0.05] to-white/[0.02] border border-[#D070E5]/20 rounded-3xl p-10 overflow-hidden">
+            <div className="relative backdrop-blur-xl bg-gradient-to-bl from-white/[0.05] to-white/[0.02] border border-[#D070E5]/20 rounded-3xl p-6 md:p-10 overflow-hidden">
               
               <div className="relative z-10">
                 <motion.div 
@@ -110,7 +110,7 @@ export function Values() {
                   <Users className="w-10 h-10 text-[#D070E5]" />
                 </motion.div>
                 
-                <h3 className="mb-4 text-white" style={{ fontSize: '1.75rem', fontWeight: '300' }}>
+                <h3 className="mb-4 text-white text-xl md:text-[1.75rem]" style={{ fontWeight: '300' }}>
                   Proximité
                 </h3>
                 <TextReveal className="text-gray-400 leading-relaxed">

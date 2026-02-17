@@ -7,14 +7,14 @@ import { Button } from "./ui/button";
 export function CTABand({ onOpenProjetModal }) {
   return (
     <motion.section
-      className="py-24 relative overflow-hidden"
+      className="py-16 md:py-24 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <motion.div
-          className="relative rounded-3xl border border-[#D070E5]/20 bg-gradient-to-br from-[#D070E5]/5 to-transparent p-12 md:p-16 text-center overflow-hidden"
+          className="relative rounded-2xl md:rounded-3xl border border-[#D070E5]/20 bg-gradient-to-br from-[#D070E5]/5 to-transparent p-6 sm:p-10 md:p-12 lg:p-16 text-center overflow-hidden"
           initial={{ opacity: 0, y: 50, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: false }}
@@ -46,7 +46,7 @@ export function CTABand({ onOpenProjetModal }) {
               Prêt à démarrer ?
             </motion.p>
             <motion.h2
-              className="text-white text-3xl md:text-4xl font-light mb-6 max-w-2xl mx-auto"
+              className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light mb-4 md:mb-6 max-w-2xl mx-auto"
               style={{ fontFamily: "Obviously", lineHeight: 1.3 }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export function CTABand({ onOpenProjetModal }) {
               </motion.span>
             </motion.h2>
             <motion.p
-              className="text-gray-400 mb-10 max-w-xl mx-auto"
+              className="text-gray-400 mb-6 md:mb-10 max-w-xl mx-auto text-sm sm:text-base"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
@@ -83,7 +83,7 @@ export function CTABand({ onOpenProjetModal }) {
             >
               <Button
                 onClick={onOpenProjetModal}
-                className="bg-gradient-to-r from-[#D070E5] to-[#F42CFF] hover:from-[#F42CFF] hover:to-[#D070E5] text-white rounded-full px-10 py-6 text-lg"
+                className="bg-gradient-to-r from-[#D070E5] to-[#F42CFF] hover:from-[#F42CFF] hover:to-[#D070E5] text-white rounded-full px-6 sm:px-10 py-5 sm:py-6 text-base sm:text-lg"
               >
                 <span className="flex items-center gap-2">
                   Réserver un échange gratuit

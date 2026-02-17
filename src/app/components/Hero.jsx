@@ -37,11 +37,11 @@ export function Hero({ onOpenProjetModal }) {
 
       {/* --- LAYER 2 : CONTENU (UI) --- */}
       {/* z-10 pour être au dessus. pointer-events-none pour laisser passer les clics vers le cube ailleurs */}
-      <div className="relative z-10 container mx-auto h-full px-6 flex flex-col justify-center lg:flex-row lg:items-center pointer-events-none">
+      <div className="relative z-10 container mx-auto h-full px-4 sm:px-6 flex flex-col justify-center lg:flex-row lg:items-center pointer-events-none max-w-7xl">
         
         {/* Colonne Gauche : Contenu Texte */}
         {/* Sur mobile : centré. Sur Desktop : aligné à gauche et largeur limitée à 50% pour ne pas toucher le cube central */}
-        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left pt-20 lg:pt-0">
+        <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left pt-24 sm:pt-28 lg:pt-0">
           
 
           <motion.div
@@ -50,7 +50,7 @@ export function Hero({ onOpenProjetModal }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            <h1 className="text-white flex flex-col lg:block text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="text-white flex flex-col lg:block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
               {["Créons", "le", "lien", "entre", "vous", "et"].map((word, i) => (
                 <motion.span
                   key={word}
@@ -80,7 +80,7 @@ export function Hero({ onOpenProjetModal }) {
           </motion.div>
 
           <motion.p 
-            className="mb-6 text-gray-400 max-w-lg text-lg lg:text-xl pointer-events-auto"
+            className="mb-6 text-gray-400 max-w-lg text-base sm:text-lg lg:text-xl pointer-events-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
@@ -88,7 +88,7 @@ export function Hero({ onOpenProjetModal }) {
             Une approche créative à la frontière entre innovation technologique et proximité humaine.
           </motion.p>
           <motion.div 
-            className="flex flex-wrap gap-4 mb-10 pointer-events-auto"
+            className="flex flex-wrap gap-2 sm:gap-4 mb-8 sm:mb-10 pointer-events-auto justify-center lg:justify-start"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
@@ -120,7 +120,7 @@ export function Hero({ onOpenProjetModal }) {
             >
             <Button 
               onClick={onOpenProjetModal}
-              className="bg-gradient-to-r from-[#D070E5] to-[#F42CFF] hover:from-[#F42CFF] hover:to-[#D070E5] text-white rounded-full px-8 py-6 text-lg shadow-[0_0_30px_rgba(208,112,229,0.4)] hover:shadow-[0_0_50px_rgba(208,112,229,0.6)] transition-all duration-300"
+              className="bg-gradient-to-r from-[#D070E5] to-[#F42CFF] hover:from-[#F42CFF] hover:to-[#D070E5] text-white rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg shadow-[0_0_30px_rgba(208,112,229,0.4)] hover:shadow-[0_0_50px_rgba(208,112,229,0.6)] transition-all duration-300"
             >
               <span className="flex items-center gap-2">
                 Démarrer un projet
@@ -139,7 +139,7 @@ export function Hero({ onOpenProjetModal }) {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-10"
+        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}

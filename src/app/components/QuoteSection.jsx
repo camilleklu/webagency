@@ -8,13 +8,13 @@ const quote = "Le digital n'est pas qu'une question de technologie, c'est avant 
 export function QuoteSection() {
   return (
     <motion.section
-      className="py-24 relative overflow-hidden"
+      className="py-16 md:py-24 relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, amount: 0.3 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <motion.div
           className="max-w-4xl mx-auto text-center relative"
           initial={{ opacity: 0 }}
@@ -28,10 +28,10 @@ export function QuoteSection() {
             viewport={{ once: false }}
             transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
           >
-            <Quote className="w-16 h-16 text-[#D070E5]/30 mx-auto mb-8" />
+            <Quote className="w-12 h-12 sm:w-16 sm:h-16 text-[#D070E5]/30 mx-auto mb-6 md:mb-8" />
           </motion.div>
           <blockquote
-            className="text-2xl md:text-3xl font-light text-white leading-relaxed mb-8"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white leading-relaxed mb-6 md:mb-8"
             style={{ fontFamily: "Obviously" }}
           >
             <span className="inline-block">&ldquo;</span>

@@ -41,9 +41,9 @@ const Phrase = ({src, text, separator, images, font, color, separatorColor}) => 
         return(
             <div className="flex gap-5 px-5 items-center">
                 {/* sm: 2.5rem | md: 4rem | lg: 6rem (ajustable selon tes besoins) */}
-                <p className="text-[2.5rem] md:text-[4rem] lg:text-[6rem] uppercase" style={textStyle}>
+                <p className="text-[1.75rem] sm:text-[2.5rem] md:text-[4rem] lg:text-[6rem] uppercase" style={textStyle}>
                     {text} 
-                    <span className="text-[2.5rem] md:text-[4rem] lg:text-[6rem]" style={separatorStyle}>
+                    <span className="text-[1.75rem] sm:text-[2.5rem] md:text-[4rem] lg:text-[6rem]" style={separatorStyle}>
                         &nbsp;{separator}
                     </span>
                 </p>

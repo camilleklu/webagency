@@ -8,7 +8,7 @@ export function Projects() {
   return (
     <motion.section 
       id="projets" 
-      className="py-16 md:py-32 relative overflow-hidden"
+      className="py-12 md:py-24 lg:py-32 relative overflow-hidden overflow-x-clip"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, amount: 0.3 }}

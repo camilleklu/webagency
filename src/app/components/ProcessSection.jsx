@@ -32,10 +32,10 @@ const steps = [
 
 export function ProcessSection() {
   return (
-    <section className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section id="process" className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
@@ -45,8 +45,8 @@ export function ProcessSection() {
             Notre méthodologie
           </span>
           <h2
-            className="mt-4 mb-6 text-white"
-            style={{ fontSize: "2.5rem", fontWeight: "200", fontFamily: "Obviously" }}
+            className="mt-4 mb-6 text-white text-2xl sm:text-3xl md:text-[2.5rem]"
+            style={{ fontWeight: "200", fontFamily: "Obviously" }}
           >
             Comment nous travaillons
           </h2>
@@ -55,7 +55,7 @@ export function ProcessSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto relative">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
@@ -69,7 +69,7 @@ export function ProcessSection() {
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
                 <motion.div
-                  className="relative h-full p-8 rounded-2xl border border-[#D070E5]/10 bg-white/[0.02] hover:border-[#D070E5]/25 transition-all duration-300"
+                  className="relative h-full p-6 sm:p-8 rounded-2xl border border-[#D070E5]/10 bg-white/[0.02] hover:border-[#D070E5]/25 transition-all duration-300"
                   whileHover={{ boxShadow: "0 20px 40px -15px rgba(208, 112, 229, 0.15)" }}
                 >
                   <motion.span

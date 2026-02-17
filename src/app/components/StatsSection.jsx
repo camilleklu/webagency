@@ -20,15 +20,15 @@ export function StatsSection() {
       viewport={{ once: false, amount: 0.3 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             const isNumeric = ["50", "35", "100"].includes(stat.value);
             return (
               <motion.div
                 key={stat.label}
-                className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl border border-[#D070E5]/10 hover:border-[#D070E5]/25 transition-colors duration-300 group"
+                className="flex flex-col items-center text-center gap-3 md:gap-4 p-4 md:p-6 rounded-2xl border border-[#D070E5]/10 hover:border-[#D070E5]/25 transition-colors duration-300 group"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
@@ -43,7 +43,7 @@ export function StatsSection() {
                   <Icon className="w-7 h-7 text-[#D070E5]" />
                 </motion.div>
                 <div>
-                  <span className="text-3xl md:text-4xl font-light text-white">
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-light text-white">
                     {isNumeric ? (
                       <AnimatedCounter value={stat.value} suffix={stat.suffix} duration={1.2} />
                     ) : (

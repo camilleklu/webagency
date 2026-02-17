@@ -45,14 +45,14 @@ export function Services() {
   return (
     <section
       id="nos-services"
-      className="py-32 relative overflow-hidden"
+      className="py-16 sm:py-24 md:py-32 relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#D070E5]/5 blur-[120px] rounded-full" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-[#F42CFF]/5 blur-[120px] rounded-full" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mb-20">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 md:gap-12 mb-12 md:mb-20">
           {/* Left side - Title */}
           <motion.div
             className="lg:max-w-md"
@@ -74,9 +74,8 @@ export function Services() {
             </motion.div>
 
             <h2
-              className="mb-6 tracking-tight text-white"
+              className="mb-4 md:mb-6 tracking-tight text-white text-2xl sm:text-3xl md:text-[3rem]"
               style={{
-                fontSize: "3rem",
                 fontWeight: "200",
                 lineHeight: "1.1",
                 fontFamily: "Obviously",
@@ -85,7 +84,7 @@ export function Services() {
             >
               Nos expertises
             </h2>
-            <p className="text-gray-400" style={{ fontSize: "1.125rem" }}>
+            <p className="text-gray-400 text-sm sm:text-base md:text-[1.125rem]">
               De la stratégie à la livraison, nous accompagnons chaque étape de votre transformation digitale
             </p>
           </motion.div>
@@ -99,7 +98,7 @@ export function Services() {
             transition={{ duration: 0.8 }}
           >
             {/* Grid Layout Bento */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[160px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 auto-rows-[minmax(140px,auto)] sm:auto-rows-[160px]">
               {/* Petite carte - top left */}
               {services
                 .filter((s) => s.size === "small")
@@ -122,7 +121,7 @@ export function Services() {
 
                       {/* Card */}
                       <motion.div 
-                        className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-6 overflow-hidden transition-all duration-300"
+                        className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-4 sm:p-6 overflow-hidden transition-all duration-300"
                         style={{ transformStyle: "preserve-3d" }}
                       >
                         <div className="relative z-10 flex flex-col h-full justify-between">
@@ -202,7 +201,7 @@ export function Services() {
                   return (
                     <motion.div
                       key={service.title}
-                      className="group relative col-span-2 row-span-2"
+                      className="group relative sm:col-span-2 sm:row-span-2 col-span-1 row-span-1"
                       style={{ perspective: 1000 }}
                       initial={{ opacity: 0, y: 50 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -215,7 +214,7 @@ export function Services() {
                       <div className="absolute -inset-0.5 bg-gradient-to-b from-[#D070E5] to-[#F42CFF] rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500" />
 
                       {/* Card */}
-                      <motion.div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-8 overflow-hidden transition-all duration-300">
+                      <motion.div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-6 sm:p-8 overflow-hidden transition-all duration-300">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D070E5]/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="relative z-10 flex flex-col h-full justify-between">

@@ -38,15 +38,15 @@ export function Footer({ onOpenProjetModal }) {
       id="contact"
       className="relative overflow-hidden"
     >
-      <div className="relative py-20 md:py-24">
+      <div className="relative py-12 sm:py-16 md:py-20 lg:py-24">
         {/* Subtle background */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0E0E0E]/50 to-[#0E0E0E]" />
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#D070E5]/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F42CFF]/5 blur-[150px] rounded-full pointer-events-none" />
 
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10 max-w-7xl">
           {/* Main content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:gap-12 lg:gap-8 mb-12 md:mb-16">
             {/* Brand column */}
             <motion.div
               className="lg:col-span-5"
@@ -56,7 +56,7 @@ export function Footer({ onOpenProjetModal }) {
               transition={{ duration: 0.6 }}
             >
               <div className="mb-6">
-                <img src="/logosvg.svg" alt="Logo Lumina" className="w-48 md:w-56" />
+                <img src="/logosvg.svg" alt="Logo Lumina" className="w-40 sm:w-48 md:w-56" />
               </div>
               <p className="text-gray-400 max-w-sm mb-8 leading-relaxed text-[0.95rem]">
                 Votre agence web créative et visionnaire, à la frontière entre
@@ -135,7 +135,7 @@ export function Footer({ onOpenProjetModal }) {
                   </div>
                   <a
                     href="mailto:contact@lumina.fr"
-                    className="text-gray-400 hover:text-[#F42CFF] transition-colors duration-300"
+                    className="text-gray-400 hover:text-[#F42CFF] transition-colors duration-300 break-all sm:break-normal"
                   >
                     contact@lumina.fr
                   </a>
@@ -183,7 +183,7 @@ export function Footer({ onOpenProjetModal }) {
 
           {/* Bottom bar */}
           <motion.div
-            className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6"
+            className="pt-6 md:pt-8 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-center md:text-left"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false }}
@@ -192,7 +192,7 @@ export function Footer({ onOpenProjetModal }) {
             <p className="text-gray-500 text-sm">
               © {new Date().getFullYear()} Lumina. Tous droits réservés.
             </p>
-            <div className="flex items-center gap-6 md:gap-8 text-sm">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6 lg:gap-8 text-sm">
               {legalLinks.map(({ label, href }, i) => (
                 <motion.a
                   key={label}
