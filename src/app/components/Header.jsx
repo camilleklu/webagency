@@ -24,7 +24,7 @@ export function Header() {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {['Accueil', 'Nos services', 'Contact'].map((item, index) => (
+            {['Accueil', 'Nos expertises', 'Nos valeurs', 'Contact'].map((item, index) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase().replace(/\s/g, '-')}`}

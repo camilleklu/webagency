@@ -44,7 +44,7 @@ const services = [
 export function Services() {
   return (
     <section
-      id="nos-services"
+      id="nos-expertises"
       className="py-32 bg-[#0E0E0E] relative overflow-hidden"
     >
       {/* Background elements */}
@@ -69,7 +69,7 @@ export function Services() {
               transition={{ duration: 0.6 }}
             >
               <span className="text-[#D070E5] tracking-widest uppercase text-sm">
-                Expertise complète
+                Notre Savoir-faire
               </span>
             </motion.div>
 
@@ -86,7 +86,7 @@ export function Services() {
               Nos expertises
             </h2>
             <p className="text-gray-400" style={{ fontSize: "1.125rem" }}>
-              Des solutions digitales complètes pour donner vie à vos ambitions
+              De la stratégie à la performance
             </p>
           </motion.div>
 
