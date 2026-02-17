@@ -6,23 +6,21 @@ import TextReveal from "./TextReveal";
 
 export function Values() {
   return (
-    <section className="py-32 bg-black relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#D070E5]/10 blur-[100px] rounded-full" />
+    <section id="nos-valeurs" className="py-32 relative overflow-hidden">
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: false }}
+          transition={{ type: "spring", stiffness: 80, damping: 20 }}
         >
           <motion.div
             className="inline-block mb-4"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
             <span className="text-[#D070E5] tracking-widest uppercase text-sm">Notre ADN</span>
@@ -45,28 +43,28 @@ export function Values() {
             className="group relative"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: false }}
+            transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.2 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             {/* Glow effect on hover */}
             <div 
-              className="absolute -inset-1 bg-gradient-to-r from-[#D070E5] to-[#E3BDFF] rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"
+              className="absolute -inset-1 bg-gradient-to-r from-[#D070E5] to-[#D070E5] rounded-3xl opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500"
             />
             
             {/* Glass card */}
             <div className="relative backdrop-blur-xl bg-gradient-to-br from-white/[0.05] to-white/[0.02] border border-[#D070E5]/20 rounded-3xl p-10 overflow-hidden">
-              {/* Inner glow */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#D070E5]/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2" />
               
               <div className="relative z-10">
                 <motion.div 
-                  className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#D070E5]/20 to-[#E3BDFF]/20 backdrop-blur-sm flex items-center justify-center mb-8 border border-[#D070E5]/30 group-hover:border-[#D070E5]/60 transition-all duration-300"
+                  className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#D070E5]/20 to-[#D070E5]/10 backdrop-blur-sm flex items-center justify-center mb-8 border border-[#D070E5]/30 group-hover:border-[#D070E5]/60 transition-all duration-300"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   style={{
-                    boxShadow: '0 0 30px rgba(208, 112, 229, 0.3)'
+                    boxShadow: '0 0 20px rgba(208, 112, 229, 0.15)'
                   }}
                 >
-                  <Eye className="w-10 h-10 text-[#E3BDFF]" />
+                  <Eye className="w-10 h-10 text-[#D070E5]" />
                 </motion.div>
                 
                 <h3 className="mb-4 text-white" style={{ fontSize: '1.75rem', fontWeight: '300' }}>
@@ -79,7 +77,7 @@ export function Values() {
               </div>
 
               {/* Decorative lines */}
-              <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D070E5]/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D070E5]/25 to-transparent" />
             </div>
           </motion.div>
 
@@ -88,51 +86,51 @@ export function Values() {
             className="group relative"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: false }}
+            transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.4 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             {/* Glow effect on hover */}
             <div 
-              className="absolute -inset-1 bg-gradient-to-l from-[#D070E5] to-[#E3BDFF] rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"
+              className="absolute -inset-1 bg-gradient-to-l from-[#D070E5] to-[#D070E5] rounded-3xl opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500"
             />
             
             {/* Glass card */}
-            <div className="relative backdrop-blur-xl bg-gradient-to-bl from-white/[0.05] to-white/[0.02] border border-[#E3BDFF]/20 rounded-3xl p-10 overflow-hidden">
-              {/* Inner glow */}
-              <div className="absolute top-0 left-0 w-64 h-64 bg-[#E3BDFF]/10 blur-3xl rounded-full -translate-y-1/2 -translate-x-1/2" />
+            <div className="relative backdrop-blur-xl bg-gradient-to-bl from-white/[0.05] to-white/[0.02] border border-[#D070E5]/20 rounded-3xl p-10 overflow-hidden">
               
               <div className="relative z-10">
                 <motion.div 
-                  className="w-20 h-20 rounded-2xl bg-gradient-to-bl from-[#E3BDFF]/20 to-[#D070E5]/20 backdrop-blur-sm flex items-center justify-center mb-8 border border-[#E3BDFF]/30 group-hover:border-[#E3BDFF]/60 transition-all duration-300"
+                  className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#D070E5]/20 to-[#D070E5]/10 backdrop-blur-sm flex items-center justify-center mb-8 border border-[#D070E5]/30 group-hover:border-[#D070E5]/60 transition-all duration-300"
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   style={{
-                    boxShadow: '0 0 30px rgba(227, 189, 255, 0.3)'
+                    boxShadow: '0 0 20px rgba(208, 112, 229, 0.15)'
                   }}
                 >
-                  <Users className="w-10 h-10 text-[#E3BDFF]" />
+                  <Users className="w-10 h-10 text-[#D070E5]" />
                 </motion.div>
                 
                 <h3 className="mb-4 text-white" style={{ fontSize: '1.75rem', fontWeight: '300' }}>
                   Proximité
                 </h3>
-                <TextReveal className="text-pink-400 leading-relaxed">
+                <TextReveal className="text-gray-400 leading-relaxed">
                   Une collaboration humaine et accessible. Nous sommes à vos côtés, véritables partenaires 
                   de votre réussite digitale. L'écoute, l'empathie et la réactivité au cœur de notre méthode.
                 </TextReveal>
               </div>
 
               {/* Decorative lines */}
-              <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#E3BDFF]/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D070E5]/30 to-transparent" />
             </div>
           </motion.div>
         </div>
 
         {/* Connecting line between cards */}
         <motion.div 
-          className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-[#D070E5]/50 via-[#E3BDFF]/50 to-[#D070E5]/50"
+          className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-[#D070E5]/30 via-[#D070E5]/20 to-[#D070E5]/30"
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ delay: 0.8, duration: 0.6 }}
         />
       </div>

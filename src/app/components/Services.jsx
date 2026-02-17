@@ -45,11 +45,11 @@ export function Services() {
   return (
     <section
       id="nos-services"
-      className="py-32 bg-[#0E0E0E] relative overflow-hidden"
+      className="py-32 relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#D070E5]/5 blur-[120px] rounded-full" />
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-[#E3BDFF]/5 blur-[120px] rounded-full" />
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-[#F42CFF]/5 blur-[120px] rounded-full" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12 mb-20">
@@ -58,14 +58,14 @@ export function Services() {
             className="lg:max-w-md"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
+            transition={{ type: "spring", stiffness: 80, damping: 20 }}
           >
             <motion.div
               className="mb-4"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6 }}
             >
               <span className="text-[#D070E5] tracking-widest uppercase text-sm">
@@ -86,7 +86,7 @@ export function Services() {
               Nos expertises
             </h2>
             <p className="text-gray-400" style={{ fontSize: "1.125rem" }}>
-              Des solutions digitales complètes pour donner vie à vos ambitions
+              De la stratégie à la livraison, nous accompagnons chaque étape de votre transformation digitale
             </p>
           </motion.div>
 
@@ -95,7 +95,7 @@ export function Services() {
             className="flex-1 max-w-4xl"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.8 }}
           >
             {/* Grid Layout Bento */}
@@ -109,24 +109,29 @@ export function Services() {
                     <motion.div
                       key={service.title}
                       className="group relative col-span-1 row-span-1"
+                      style={{ perspective: 1000 }}
                       initial={{ opacity: 0, y: 50 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      whileHover={{ y: -8 }}
+                      viewport={{ once: false }}
+                      transition={{ type: "spring", stiffness: 100, damping: 15, delay: index * 0.1 }}
+                      whileHover={{ y: -8, scale: 1.02, rotateX: 2, rotateY: -2, transition: { duration: 0.3 } }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       {/* Glow effect */}
-                      <div className="absolute -inset-0.5 bg-gradient-to-b from-[#D070E5] to-[#E3BDFF] rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500" />
+                      <div className="absolute -inset-0.5 bg-gradient-to-b from-[#D070E5] to-[#F42CFF] rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500" />
 
                       {/* Card */}
-                      <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-6 overflow-hidden transition-all duration-300">
+                      <motion.div 
+                        className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-6 overflow-hidden transition-all duration-300"
+                        style={{ transformStyle: "preserve-3d" }}
+                      >
                         <div className="relative z-10 flex flex-col h-full justify-between">
                           <motion.div
                             className="w-12 h-12 rounded-xl bg-[#D070E5]/10 backdrop-blur-sm flex items-center justify-center border border-[#D070E5]/20 group-hover:bg-[#D070E5]/20 group-hover:border-[#D070E5]/40 transition-all duration-300"
                             whileHover={{ rotate: 360 }}
                             transition={{ duration: 0.6 }}
                           >
-                            <Icon className="w-6 h-6 text-[#E3BDFF]" />
+                            <Icon className="w-6 h-6 text-[#F42CFF]" />
                           </motion.div>
 
                           <div>
@@ -135,8 +140,8 @@ export function Services() {
                             </h3>
                           </div>
                         </div>
-                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#D070E5] to-[#E3BDFF] group-hover:w-full transition-all duration-500" />
-                      </div>
+                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#D070E5] to-[#F42CFF] group-hover:w-full transition-all duration-500" />
+                      </motion.div>
                     </motion.div>
                   );
                 })}
@@ -150,17 +155,19 @@ export function Services() {
                     <motion.div
                       key={service.title}
                       className="group relative col-span-1 row-span-1"
+                      style={{ perspective: 1000 }}
                       initial={{ opacity: 0, y: 50 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: (index + 1) * 0.1 }}
-                      whileHover={{ y: -8 }}
+                      viewport={{ once: false }}
+                      transition={{ type: "spring", stiffness: 100, damping: 15, delay: (index + 1) * 0.1 }}
+                      whileHover={{ y: -8, scale: 1.02, rotateX: 2, rotateY: 2 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       {/* Glow effect */}
-                      <div className="absolute -inset-0.5 bg-gradient-to-b from-[#D070E5] to-[#E3BDFF] rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500" />
+                      <div className="absolute -inset-0.5 bg-gradient-to-b from-[#D070E5] to-[#F42CFF] rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500" />
 
                       {/* Card */}
-                      <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-6 overflow-hidden transition-all duration-300">
+                      <motion.div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-6 overflow-hidden transition-all duration-300">
                         <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#D070E5]/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="relative z-10 flex flex-col h-full justify-between">
@@ -169,7 +176,7 @@ export function Services() {
                             whileHover={{ rotate: 360 }}
                             transition={{ duration: 0.6 }}
                           >
-                            <Icon className="w-7 h-7 text-[#E3BDFF]" />
+                            <Icon className="w-7 h-7 text-[#F42CFF]" />
                           </motion.div>
 
                           <div>
@@ -181,8 +188,8 @@ export function Services() {
                             </p>
                           </div>
                         </div>
-                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#D070E5] to-[#E3BDFF] group-hover:w-full transition-all duration-500" />
-                      </div>
+                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#D070E5] to-[#F42CFF] group-hover:w-full transition-all duration-500" />
+                      </motion.div>
                     </motion.div>
                   );
                 })}
@@ -196,17 +203,19 @@ export function Services() {
                     <motion.div
                       key={service.title}
                       className="group relative col-span-2 row-span-2"
+                      style={{ perspective: 1000 }}
                       initial={{ opacity: 0, y: 50 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                      whileHover={{ y: -8 }}
+                      viewport={{ once: false }}
+                      transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.4 }}
+                      whileHover={{ y: -8, scale: 1.01, rotateX: 1, rotateY: -1 }}
+                      whileTap={{ scale: 0.99 }}
                     >
                       {/* Glow effect */}
-                      <div className="absolute -inset-0.5 bg-gradient-to-b from-[#D070E5] to-[#E3BDFF] rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500" />
+                      <div className="absolute -inset-0.5 bg-gradient-to-b from-[#D070E5] to-[#F42CFF] rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-500" />
 
                       {/* Card */}
-                      <div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-8 overflow-hidden transition-all duration-300">
+                      <motion.div className="relative h-full backdrop-blur-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-[#D070E5]/10 group-hover:border-[#D070E5]/40 rounded-2xl p-8 overflow-hidden transition-all duration-300">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D070E5]/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="relative z-10 flex flex-col h-full justify-between">
@@ -215,7 +224,7 @@ export function Services() {
                             whileHover={{ rotate: 360 }}
                             transition={{ duration: 0.6 }}
                           >
-                            <Icon className="w-10 h-10 text-[#E3BDFF]" />
+                            <Icon className="w-10 h-10 text-[#F42CFF]" />
                           </motion.div>
 
                           <div>
@@ -230,8 +239,8 @@ export function Services() {
                             </p>
                           </div>
                         </div>
-                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#D070E5] to-[#E3BDFF] group-hover:w-full transition-all duration-500" />
-                      </div>
+                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#D070E5] to-[#F42CFF] group-hover:w-full transition-all duration-500" />
+                      </motion.div>
                     </motion.div>
                   );
                 })}

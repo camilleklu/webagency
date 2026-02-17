@@ -1,28 +1,47 @@
 @import "tailwindcss";
 
 :root {
-    --background: #0a0a0a;
+    --background: #0E0E0E;
     --foreground: #ededed;
+    --brand: #D070E5;
+    --brand-light: #F42CFF;
+    --brand-accent: #F42CFF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-light: var(--brand-light);
+  --color-brand-accent: var(--brand-accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0E0E0E;
     --foreground: #ededed;
   }
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Accent lumineux subtil sur les liens et éléments interactifs */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 @font-face {
