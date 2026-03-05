@@ -75,7 +75,6 @@ export function Hero({ onOpenProjetModal }) {
               >
                 le web
               </motion.span>
-            </motion.span>
             </h1>
           </motion.div>
 
