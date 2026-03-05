@@ -26,20 +26,26 @@ const Lines = ({src, left, progress, direction="left", text, separator, images, 
     const x = useTransform(progress, [0,1], [-1000 *dir , 1000 *dir])
     return(
         <motion.div style={{left, x}} className="flex relative whitespace-nowrap">
-            <Phrase src={src} font={font} text={text} separator={separator}  images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
-            <Phrase src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
+            {[...Array(9)].map((_, i) => (
+                 <Phrase key={i} src={src} font={font} text={text} separator={separator} images={images} color={color} separatorColor={separatorColor}/>
+            ))}
         </motion.div>
     )
 }
 const Phrase = ({src, text, separator, images, font, color, separatorColor}) => {
+    // On définit des classes de base (mobile) et on augmente pour les écrans plus larges
+    const textStyle = { color: color, fontFamily: font };
+    const separatorStyle = { color: separatorColor, fontFamily: font };
+
     if(!images) {
         return(
             <div className="flex gap-5 px-5 items-center">
-                <p className={`text-[5.5vw]`} style={{color: color, fontFamily: font}}>{text} 
-                    <span className="text-[5.5vw]" style={{color: separatorColor}}>&nbsp;{separator}</span>
+                {/* sm: 2.5rem | md: 4rem | lg: 6rem (ajustable selon tes besoins) */}
+                <p className="text-[1.75rem] sm:text-[2.5rem] md:text-[4rem] lg:text-[6rem] uppercase" style={textStyle}>
+                    {text} 
+                    <span className="text-[1.75rem] sm:text-[2.5rem] md:text-[4rem] lg:text-[6rem]" style={separatorStyle}>
+                        &nbsp;{separator}
+                    </span>
                 </p>
             </div>
         )
@@ -47,8 +53,11 @@ const Phrase = ({src, text, separator, images, font, color, separatorColor}) => 
     else {
         return (
             <div className="flex gap-5 px-5 items-center">
-                <p className="text-[7.5vw]">{text}</p>
-                <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden">
+                {/* sm: 5rem | md: 8rem | lg: 10rem */}
+                <p className="text-[5rem] md:text-[8rem] lg:text-[10rem] uppercase">
+                    {text}
+                </p>
+                <span className="relative h-[5rem] md:h-[8rem] lg:h-[10rem] aspect-[4/2] rounded-full overflow-hidden">
                     <Image style={{objectFit:"cover"}} src={src} alt="image" fill/>
                 </span>
             </div>

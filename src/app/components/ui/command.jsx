@@ -6,7 +6,11 @@ import { SearchIcon } from "lucide-react";
 
 import { cn } from "./utils";
 import {
-  DialogTitle: 0,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
 } from "./dialog";
 
 function Command({
