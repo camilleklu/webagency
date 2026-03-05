@@ -63,19 +63,25 @@ export function Hero({ onOpenProjetModal }) {
                 </motion.span>
               ))}
               <motion.span 
-                className="inline-block lg:ml-4 font-semibold bg-gradient-to-r from-[#D070E5] via-[#F42CFF] to-[#D070E5] bg-clip-text text-transparent"
-                style={{ textShadow: '0 0 80px rgba(208, 112, 229, 0.5)' }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, type: "spring", stiffness: 80 }}
+              className="inline-block lg:ml-4 font-semibold"
+              style={{
+                background: 'linear-gradient(to right, #D070E5, #F42CFF, #D070E5)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: 'drop-shadow(0 0 20px rgba(208, 112, 229, 0.6))'
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, type: "spring", stiffness: 80 }}
+            >
+              <motion.span
+                animate={{ opacity: [1, 0.85, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <motion.span
-                  animate={{ opacity: [1, 0.85, 1] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  le web
-                </motion.span>
+                le web
               </motion.span>
+            </motion.span>
             </h1>
           </motion.div>
 
