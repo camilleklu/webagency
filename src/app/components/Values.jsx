@@ -1,6 +1,6 @@
 'use client'
 
-import { Eye, Users } from "lucide-react";
+import { Eye, Sparkles, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import TextReveal from "./TextReveal";
 
@@ -150,15 +150,15 @@ export function Values() {
                     boxShadow: '0 0 30px rgba(227, 189, 255, 0.3)'
                   }}
                 >
-                  <Users className="w-10 h-10 text-[#E3BDFF]" />
+                  <Sparkles className="w-10 h-10 text-[#E3BDFF]" />
                 </motion.div>
                 
                 <h3 className="mb-4 text-white" style={{ fontSize: '1.75rem', fontWeight: '300' }}>
                   Simplicité
                 </h3>
                 <TextReveal className="text-pink-400 leading-relaxed">
-                  Une collaboration humaine et accessible. Nous sommes à vos côtés, véritables partenaires 
-                  de votre réussite digitale. L'écoute, l'empathie et la réactivité au cœur de notre méthode.
+                  Aller à l’essentiel, sans complexité inutile. Nous concevons des solutions digitales claires, fluides et faciles à comprendre. 
+                  La simplicité et l’efficacité guident chacune de nos réalisations.
                 </TextReveal>
               </div>
 
